@@ -16,6 +16,7 @@ import Home from "material-ui/svg-icons/action/home";
 
 import * as Colors from "material-ui/styles/colors";
 import muiThemeable from "material-ui/styles/muiThemeable";
+import { withRouter } from "react-router-dom";
 
 class NavContainer extends Component {
   constructor(props) {
@@ -39,6 +40,7 @@ class NavContainer extends Component {
       edit: false,
       showFavorites: true
     };
+    this.onclick = this.onclick.bind(this);
     this.onclickLevel = this.onclickLevel.bind(this);
     this.addToFavs = this.addToFavs.bind(this);
     this.removeFromFavs = this.removeFromFavs.bind(this);
@@ -65,7 +67,10 @@ class NavContainer extends Component {
       this.state["items" + level]
     );
   }
-
+  onclick(item) {
+    this.props.history.push(`${item.endpoint}`);
+    this.onclickLevel(item);
+  }
   onclickLevel(item) {
     const { id, level } = item;
     this.setState({ edit: false });
@@ -95,6 +100,7 @@ class NavContainer extends Component {
     }
   }
   addToFavs() {
+    //debugger;
     console.log("addToFavs");
     if (!this.state.currentSelectionLeaf) {
       return;
@@ -105,6 +111,7 @@ class NavContainer extends Component {
     let obj = R.find(R.propEq("id", this.state.currentSelection))(
       this.state.data
     );
+    console.log("obj " + JSON.stringify(obj));
 
     if (obj.leaf) {
       console.log("YES CURRENT LEAF " + obj.leaf);
@@ -163,7 +170,7 @@ class NavContainer extends Component {
     this.setState({ currentFavorite: n });
   }
   renderFavorites(f, i) {
-    console.log("renderFavorites " + f + " " + i);
+    const o = R.find(x => x.id === f, this.state.data);
     return (
       <div
         style={{
@@ -175,12 +182,13 @@ class NavContainer extends Component {
           height: 20,
           display: "flex",
           justifyContent: "space-between",
-          alignItems: "flex-start"
+          alignItems: "center",
+          paddingTop: "6px"
         }}
         onClick={() => this.favoriteItem(f)}
         key={i}
       >
-        <h4>Favorite {f}</h4>
+        <h4>{o.name}</h4>
         {
           <span
             onClick={() => this.removeFromFavs(f)}
@@ -348,7 +356,7 @@ class NavContainer extends Component {
               key={item1.id}
               styl={this.fStyle(item1.show)}
               item={item1}
-              onclick={this.onclickLevel}
+              onclick={this.onclick}
               currentSelection={
                 this.state.currentSelection == item1.id ? true : false
               }
@@ -361,7 +369,7 @@ class NavContainer extends Component {
               key={item2.id}
               styl={this.fStyle(item2.show)}
               item={item2}
-              onclick={this.onclickLevel}
+              onclick={this.onclick}
               currentSelection={
                 this.state.currentSelection == item2.id ? true : false
               }
@@ -374,7 +382,7 @@ class NavContainer extends Component {
               key={item3.id}
               styl={this.fStyle(item3.show)}
               item={item3}
-              onclick={this.onclickLevel}
+              onclick={this.onclick}
               currentSelection={
                 this.state.currentSelection == item3.id ? true : false
               }
@@ -385,4 +393,5 @@ class NavContainer extends Component {
     );
   }
 }
-export default muiThemeable()(NavContainer);
+export default withRouter(NavContainer);
+//export default muiThemeable()(NavContainer);

@@ -13,8 +13,12 @@ import { Provider } from "react-redux";
 import { configureStore } from "./store";
 
 import FlyoutContainer from "./components/FlyoutContainer";
+//import Dialog from "material-ui/Dialog";
 
 import * as Colors from "material-ui/styles/colors";
+
+//import pic6 from "./images/demo/weekly-macro-summary.png";
+//import Widget from "./components/Widget";
 
 const store = configureStore();
 //window.appStore = store; //In case you want to see what's inside by executing appStore in console;
@@ -25,7 +29,8 @@ class App extends React.Component {
     this.state = {
       navDrawerOpen: true,
       navRightDrawerOpen: false,
-      flyoutEnabled: false
+      flyoutEnabled: false,
+      modalOpen: true
     };
   }
 

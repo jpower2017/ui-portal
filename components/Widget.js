@@ -27,9 +27,13 @@ class Widget extends React.Component {
         borderRadius: "5px"
       }
     };
+    const handleClick = () => {
+      console.log("click Widget");
+      this.props.handle(this.props.image, title);
+    };
 
     return (
-      <div style={{ padding: "15px" }}>
+      <div style={{ padding: "15px" }} onClick={() => handleClick()}>
         <Paper style={styles.paper} zDepth={globalStyles.depth.n}>
           <div style={styles.text}>{title}</div>
           <div style={styles.content}>

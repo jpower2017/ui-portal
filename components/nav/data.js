@@ -1,6 +1,22 @@
 export const data1 = [
   {
     id: 1,
+    name: "Decisions",
+    level: 1,
+    show: true,
+    leaf: true,
+    endpoint: "/decisions"
+  },
+  {
+    id: 2,
+    name: "Investments",
+    level: 1,
+    show: true,
+    leaf: true,
+    endpoint: "/investments"
+  },
+  {
+    id: 3,
     name: "Deal flow",
     level: 1,
     show: true,
@@ -10,16 +26,7 @@ export const data1 = [
 ];
 
 export const data2 = [
-  { id: 10, name: "childsa", parentId: 2, level: 2, show: false, leaf: false },
-  { id: 11, name: "childsb", parentId: 2, level: 2, show: false, leaf: false },
-  { id: 12, name: "childsc", parentId: 3, level: 2, show: false, leaf: false },
-  { id: 13, name: "childsd", parentId: 2, level: 2, show: false, leaf: false },
-  { id: 14, name: "childse", parentId: 2, level: 2, show: false, leaf: false },
-  { id: 15, name: "childsf", parentId: 3, level: 2, show: false, leaf: false },
-  { id: 16, name: "childsg", parentId: 3, level: 2, show: false, leaf: true },
-  { id: 17, name: "childsh", parentId: 3, level: 2, show: false, leaf: true },
-  { id: 18, name: "childsi", parentId: 3, level: 2, show: false, leaf: false },
-  { id: 19, name: "childsj", parentId: 3, level: 2, show: false, leaf: true }
+  { id: 12, name: "childsc", parentId: 9, level: 2, show: false, leaf: false }
 ];
 
 export const data3 = [

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
 import InOutdatatable from "../containers/InOutdatatable";
 import Dashboard from "../containers/DashboardPage";
-import Demo from "../containers/Demo";
+import Investments from "../containers/Investments";
 import Bg from "../images/squares-smallC2.jpg";
 import Empty from "./Empty";
 
@@ -31,7 +31,8 @@ class MainPage extends Component {
         <Switch>
           <Route exact path="/" component={InOutdatatable} />
           <Route path="/dashboard" component={Dashboard} />
-          <Route path="/demo" component={Demo} />
+          <Route path="/investments" component={Investments} />
+          <Route path="/decisions" />
         </Switch>
       </div>
     );
